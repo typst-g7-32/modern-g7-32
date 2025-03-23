@@ -85,14 +85,34 @@
 
     v(1fr)
 
+    let final-institute = ""
+    if institute.number != none and institute.name != none {
+        final-institute += "Институт №"+str(institute.number) + " – «" + institute.name + "»"
+    }
+    else if institute.number != none {
+        final-institute += "Институт №" + str(institute.number)
+    }
+    else if institute.name != none {
+        final-institute += "Институт «" + institute.name + "»"
+    }
+
+    let final-department = ""
+    if department.number != none and department.name != none {
+        final-department += "Кафедра " + str(department.number) + " – «" + department.name + "»"
+    }
+    else if department.number != none {
+        final-department += "Кафедра " + str(department.number)
+    }
+    else if department.name != none {
+        final-department += "Кафедра «" + department.name + "»"
+    }
+
     per-line(
         indent: v(2fr),
         force-indent: true,
         align: center,
-        (value: [Институт №#institute.number – «#institute.name»],
-            when-present: (institute.number, institute.name)),
-        (value: [Кафедра #department.number – «#department.name»],       
-            when-present: (department.number, department.name)),
+        final-institute,
+        final-department
     )
 
     per-line(
