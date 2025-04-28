@@ -1,13 +1,21 @@
 #import "component/headings.typ": headings,  structural-heading-titles
 #import "component/annexes.typ": is-heading-in-annex
 
-#let gost-style(year: none, city: "", hide-title: false, text-size: 14pt, small-text-size: 10pt, indent: 1.25cm, body) = {
+#let gost-style(
+  year: none,
+  city: "", 
+  hide-title: false, 
+  text-size: 14pt, 
+  small-text-size: 10pt, 
+  indent: 1.25cm, 
+  margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
+  pagination-align: center,
+  body,
+) = {
   if small-text-size == none { small-text-size = text-size - 4pt }
   [#metadata(small-text-size) <small-text-size>]
 
-  set page(
-    margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm)
-  )
+  set page(margin: margin)
 
   set text(
     size: text-size,
@@ -66,15 +74,14 @@
   set list(marker: [–], indent: indent, spacing: 1em)
   set enum(indent: indent, spacing: 1em)
   
-  set page(footer: context [
-    #let page = here().page()
-    #align(center)[#{
-      if page == 1 {
-        if hide-title {page} else {[#city #year]}
-      } 
-      else {page}
-    }]
-  ])
+  set page(footer: context {
+    let page = here().page()
+    if page == 1 and not hide-title {
+      align(center)[#city #year]
+    } else {
+      align(pagination-align)[#page]
+    }
+  })
 
   set bibliography(style: "gost-r-705-2008-numeric", title: structural-heading-titles.references)
   
