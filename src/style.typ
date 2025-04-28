@@ -1,7 +1,8 @@
 #import "component/headings.typ": headings,  structural-heading-titles
 #import "component/annexes.typ": is-heading-in-annex
 
-#let gost-style(year: none,
+#let gost-style(
+  year: none,
   city: "", 
   hide-title: false, 
   text-size: 14pt, 
@@ -14,9 +15,7 @@
   if small-text-size == none { small-text-size = text-size - 4pt }
   [#metadata(small-text-size) <small-text-size>]
 
-  set page(
-    margin: margin
-  )
+  set page(margin: margin)
 
   set text(
     size: text-size,
