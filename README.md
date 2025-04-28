@@ -1,7 +1,5 @@
 # modern-g7-32
 
-![header](assets/header.png)
-
 Шаблон для оформления документов в соответствии с ГОСТ 7.32-2017. Он был создан для автоматизации рутинных процессов при работе с научными работами. Шаблон может быть полезен студентам вузов при оформлении лабораторных, курсовых и дипломных работ.
 
 <a href="https://typst.app/universe/package/modern-g7-32">![Typst Universe](https://img.shields.io/badge/dynamic/xml?url=https://typst.app/universe/package/modern-g7-32&query=/html/body/div/main/div[2]/aside/section[2]/dl/dd[3]&logo=typst&label=universe)</a>
@@ -10,6 +8,7 @@
 <a href="https://typst-gost.ru"><img src="https://img.shields.io/website?url=https%3A%2F%2Ftypst-gost.ru" alt="Website badge"></a>
 
 ## Быстрый старт
+
 Чтобы использовать этот шаблон, импортируйте его, как показано ниже:
 ```typst
 #import "@preview/modern-g7-32": gost, abstract, title-templates, annexes, annex-heading
@@ -55,11 +54,13 @@
 ```
 
 ## Документация
+
 Документация к проекту доступна на [сайте](https://typst-gost.ru).
 
 Если вам требуется помощь с шаблоном, можете обратиться на почту support@typst-gost.ru.
 
 ## Возможности
+
 * Формирование титульного листа
 * Встроенные шаблоны титульных листов
 * Пользовательские шаблоны титульных листов
