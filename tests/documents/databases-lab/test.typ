@@ -1,7 +1,5 @@
 #import "/src/export.typ": gost, abstract, title-templates
 
-#set text(font: "Times New Roman")
-
 #show: gost.with(
   title-template: title-templates.mai-university-lab,
   performers: (

@@ -1,24 +1,27 @@
 #import "/src/export.typ": gost, abstract, annexes, annex-heading
 #import "@preview/numberingx:0.0.1"
 
-#set text(font: "Times New Roman")
-
 // Нумерация с использованием кириллицы
 #set enum(numbering: numberingx.formatter("{lower-russian})"))
 
 #show: gost.with(
   ministry: "Наименование министерства (ведомства) или другого структурного образования, в систему которого входит организация-исполнитель",
-  organization: (full: "Полное наименование организации — исполнителя НИР", short: "Сокращённое наименование организации"),
+  organization: (
+    full: "Полное наименование организации — исполнителя НИР",
+    short: "Сокращённое наименование организации"
+  ),
   udk: "индекс УДК",
   research-number: "регистрационный номер НИР",
   report-number: "регистрационный номер отчета",
   approved-by: (
     name: "Фамилия И.О.", 
-    position: "Должность, сокращ. наимен. орг", year: 2017
+    position: "Должность, сокращ. наимен. орг",
+    year: 2017
   ), // Гриф согласования
   agreed-by: (
     name: "Фамилия И.О.", 
-    position: "Должность, сокращ. наимен. орг", year: auto
+    position: "Должность, сокращ. наимен. орг",
+    year: auto
   ), // Гриф утверждения, год подставляется из аргумента year
   report-type: "отчёт",
   about: "О научно-исследовательской работе",

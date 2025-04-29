@@ -3,8 +3,8 @@
 Шаблон для оформления документов в соответствии с ГОСТ 7.32-2017. Он был создан для автоматизации рутинных процессов при работе с научными работами. Шаблон может быть полезен студентам вузов при оформлении лабораторных, курсовых и дипломных работ.
 
 <a href="https://typst.app/universe/package/modern-g7-32">![Typst Universe](https://img.shields.io/badge/dynamic/xml?url=https://typst.app/universe/package/modern-g7-32&query=/html/body/div/main/div[2]/aside/section[2]/dl/dd[3]&logo=typst&label=universe)</a>
-<a href="https://github.com/typst-g7-32/modern-g7-32/actions"><img src="https://github.com/typst-g7-32/modern-g7-32/actions/workflows/ci.yml/badge.svg" alt="License badge"></a>
 <a href="https://github.com/typst-g7-32/modern-g7-32/blob/main/LICENSE"><img src="https://img.shields.io/github/license/typst-g7-32/modern-g7-32" alt="License badge"></a>
+<a href="https://github.com/typst-g7-32/modern-g7-32/actions"><img src="https://github.com/typst-g7-32/modern-g7-32/actions/workflows/tests.yml/badge.svg" alt="Tests badge"></a>
 <a href="https://typst-gost.ru"><img src="https://img.shields.io/website?url=https%3A%2F%2Ftypst-gost.ru" alt="Website badge"></a>
 
 ## Быстрый старт
@@ -21,11 +21,13 @@
   report-number: "регистрационный номер отчета",
   approved-by: (
     name: "Фамилия И.О.", 
-    position: "Должность, сокращ. наимен. орг", year: 2017
+    position: "Должность, сокращ. наимен. орг",
+    year: 2017
   ), // Гриф согласования
   agreed-by: (
     name: "Фамилия И.О.", 
-    position: "Должность, сокращ. наимен. орг", year: auto
+    position: "Должность, сокращ. наимен. орг",
+    year: auto
   ), // Гриф утверждения, год подставляется из аргумента year
   report-type: "отчёт",
   about: "О научно-исследовательской работе",
