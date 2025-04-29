@@ -11,16 +11,13 @@
         current-organization = performer
         continue
       }
-      let performer = fetch-field(performer, performers-args, hint: "исполнителя №" + str(i + 1))
+      let performer = fetch-field(performer, performers-args, default: (co-performer: false), hint: "исполнителя №" + str(i + 1))
       performer.organization = current-organization
-      if performer.co-performer == none {
-        performer.co-performer = false
-      }
       result.push(performer)
     }
     return result
   } else if type(performers) == dictionary {
-    let performer = fetch-field(performers, performers-args, hint: "исполнителя")
+    let performer = fetch-field(performers, performers-args, default: (co-performer: false), hint: "исполнителя")
     return (performer, )
   } else {
     panic("Некорректный тип поля исполнителей")
