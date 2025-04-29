@@ -1,0 +1,70 @@
+name: build-preview
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+      - assets/utils/**
+      - .github/workflows/**
+      - tests/documents/preview/**
+
+jobs:
+  build_preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Create temporary directory
+        run: mkdir -p preview_assets
+
+      - name: Compile Typst document to PDF
+        uses: 'docker://ghcr.io/typst/typst:latest'
+        with:
+          args: >-
+            compile --root . tests/documents/preview/test.typ
+            preview_assets/main.pdf
+
+      - name: Compile Typst document to PNG
+        uses: 'docker://ghcr.io/typst/typst:latest'
+        with:
+          args: >-
+            compile --root . tests/documents/preview/test.typ
+            preview_assets/preview.png --format png --pages 1 --ppi 300
+
+      - name: Compile source Typst document to PNG
+        uses: 'docker://ghcr.io/typst/typst:latest'
+        with:
+          args: >-
+            compile --root . ./assets/utils/render-source.typ
+            preview_assets/source.png --format png --pages 1 --ppi 300
+
+      - name: Stash preview_assets
+        run: |
+          git add -f preview_assets/*
+          git stash push preview_assets
+
+      - name: Switch to preview branch
+        run: |
+          git switch --orphan preview
+
+      - name: Unstash and unpack preview_assets
+        run: |
+          git stash pop
+          mv preview_assets/* ./
+          git rm -rf preview_assets
+
+      - name: Commit and Push preview files
+        run: |
+          git add -f *
+          git commit -m "Update preview assets"
+          git push -f origin preview
