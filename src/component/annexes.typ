@@ -3,6 +3,9 @@
 #let is-heading-in-annex(heading) = state("annexes", false).at(heading.location())
 
 #let get-element-numbering(current-heading-numbering, element-numbering) = {
+  if (current-heading-numbering.first() <= 0 or element-numbering <= 0) {
+    return
+  }
   let current-numbering = formatter("{upper-russian}.{1}")(current-heading-numbering.first())
   formatter(str(current-numbering)+".{1}")(element-numbering)
 }
@@ -36,12 +39,12 @@
     it
   }
 
-  set figure(numbering: it => context {
+  set figure(numbering: it => {
     let current-heading = counter(heading).get()
     get-element-numbering(current-heading, it)
   })
 
-  set math.equation(numbering: it => context {
+  set math.equation(numbering: it => {
     let current-heading = counter(heading).get()
     [(#get-element-numbering(current-heading, it))]
   })
