@@ -1,7 +1,6 @@
-#import "/src/export.typ": gost
-#import "@preview/numberingx:0.0.1": formatter
+#import "/src/export.typ": gost, enum-numbering
 
-#set enum(numbering: formatter("{lower-russian})"))
+#set enum(numbering: enum-numbering)
 #show: gost.with(hide-title: true)
 
 Автоматически нумерованные:  

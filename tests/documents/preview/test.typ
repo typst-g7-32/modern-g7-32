@@ -1,8 +1,7 @@
-#import "/src/export.typ": gost, abstract, annexes, annex-heading
-#import "@preview/numberingx:0.0.1"
+#import "/src/export.typ": gost, abstract, annexes, annex-heading, enum-numbering
 
 // Нумерация с использованием кириллицы
-#set enum(numbering: numberingx.formatter("{lower-russian})"))
+#set enum(numbering: enum-numbering)
 
 #show: gost.with(
   ministry: "Наименование министерства (ведомства) или другого структурного образования, в систему которого входит организация-исполнитель",

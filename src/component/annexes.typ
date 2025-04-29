@@ -1,4 +1,4 @@
-#import "@preview/numberingx:0.0.1": formatter
+#import "../utils.typ": heading-numbering
 
 #let is-heading-in-annex(heading) = state("annexes", false).at(heading.location())
 
@@ -6,8 +6,9 @@
   if (current-heading-numbering.first() <= 0 or element-numbering <= 0) {
     return
   }
-  let current-numbering = formatter("{upper-russian}.{1}")(current-heading-numbering.first())
-  formatter(str(current-numbering)+".{1}")(element-numbering)
+  let current-numbering = heading-numbering(current-heading-numbering.first())
+  (current-numbering, numbering("1.1", element-numbering)).join(".")
+  // formatter(str(current-numbering)+".{1}")(element-numbering)
 }
 
 #let annex-heading(status, level: 1, body) = {
@@ -18,7 +19,7 @@
   [#none <annexes>]
 
   set heading(
-    numbering: formatter("{upper-russian}.{1}"),
+    numbering: heading-numbering,
     hanging-indent: 0pt
   )
 
