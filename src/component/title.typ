@@ -27,13 +27,13 @@
 
 #let align-function = align
 
-#let per-line(align: center, indent: v(1fr), force-indent: false, ..values) = {
+#let per-line(align: center, indent: 1fr, force-indent: false, ..values) = {
   let result = ()
   for value in values.pos() {
     let rule = false
     if type(value) in (array, dictionary) {
-      let data = fetch-field(value, ("value*", "when-rule", "when-present"), default: (when-present: "any", when-rule: none), hint: "линии")
-      assert(not (data.when-rule != none and data.when-present != "any"), message: "Должно быть выбрано только одно правило пояивления when-rule или when-present")
+      let data = fetch-field(value, ("value*", "when-rule", "when-present"), default: (when-present: "any", when-rule: true), hint: "линии")
+      assert(not (data.when-rule != true and data.when-present != "any"), message: "Должно быть выбрано только одно правило пояивления when-rule или when-present")
       if data.when-rule != none {
         rule = data.when-rule
       }
@@ -55,7 +55,7 @@
     ]
   }
   if force-indent or result != () {
-    indent
+    v(indent)
   }
 }
 

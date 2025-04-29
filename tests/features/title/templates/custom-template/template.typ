@@ -46,7 +46,7 @@
     city: none,
 ) = {
     per-line(
-      indent: none,
+      indent: 0pt,
       ministry,
       (value: upper(text(size: 18pt)[#organization.full]),
           when-present: organization.full),
@@ -57,7 +57,7 @@
     v(1fr)
 
     per-line(
-        indent: v(2fr),
+        indent: 2fr,
         force-indent: true,
         align: center,
         (value: [Институт №#institute.number – «#institute.name»],
@@ -70,7 +70,7 @@
 
     per-line(
         align: center,
-        indent: v(2fr),
+        indent: 2fr,
         (value: upper(report-type), when-present: report-type),
         (value: upper(about), when-present: about),
         (value: research, when-present: research),

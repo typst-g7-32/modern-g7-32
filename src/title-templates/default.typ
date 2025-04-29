@@ -66,7 +66,7 @@
         (value: upper[(#organization.short)], when-present: organization.short),
     )
 
-    per-line( // TODO: Вынести подобные элементы в модуль стандартных титульных компонентов с обработкой аргументов
+    per-line(
         force-indent: true,
         align: left,
         (value: [УДК: #udk], when-present: udk),
@@ -78,7 +78,7 @@
 
     per-line(
         align: center,
-        indent: v(2fr),
+        indent: 2fr,
         (value: upper(report-type), when-present: report-type),
         (value: upper(about), when-present: about),
         (value: research, when-present: research),
