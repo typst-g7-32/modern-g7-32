@@ -32,13 +32,16 @@
   for value in values.pos() {
     let rule = false
     if type(value) in (array, dictionary) {
-      let data = fetch-field(value, ("value*", "when-rule", "when-present"), default: (when-present: "any", when-rule: true), hint: "линии")
-      assert(not (data.when-rule != true and data.when-present != "any"), message: "Должно быть выбрано только одно правило пояивления when-rule или when-present")
-      if data.when-rule != none {
+      let data = fetch-field(value, ("value*", "when-rule", "when-present", "rule"), default: (when-present: "always", when-rule: "always", rule: array.all), hint: "линии")
+      assert(not (data.when-rule != "always" and data.when-present != "always"), message: "Должно быть выбрано только одно правило пояивления when-rule или when-present")
+      if data.when-rule != "always" {
         rule = data.when-rule
       }
-      if data.when-present != "any" {
-        rule = (data.when-present, ).flatten().all(elem => elem != none)
+      if data.when-present != "always" {
+        rule = (data.rule)((data.when-present, ).flatten(), elem => elem != none)
+      }
+      if data.when-rule == "always" and data.when-present == "always" {
+        rule = true
       }
       value = data.value
     } else {

@@ -2,7 +2,7 @@
 
 #show: gost.with(
   title-template: title-templates.mai-university-lab,
-  institute: (number: 3, name: "Системы управления, информатика и электроэнергетика"),
+  institute: (number: 3),
   department: (number: 307, name: "Цифровые технологии и информационные системы"),
   performers: (
     (name: "Фамилия И.О.", position: "Студент"),

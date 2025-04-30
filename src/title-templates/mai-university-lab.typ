@@ -11,6 +11,21 @@
         ("*full", "short"), 
         hint: "организации"
     )
+
+    args.institute = fetch-field(
+        args.at("institute", default: none),
+        ("number", "name"),
+        default: (number: "", name: ""),
+        hint: "института"
+    )
+
+    args.department = fetch-field(
+        args.at("department", default: none),
+        ("number", "name"),
+        default: (number: "", name: ""),
+        hint: "кафедры"
+    )
+
     args.approved-by = fetch-field(
         args.at("approved-by", default: none),
         ("name*", "position*", "year"),
@@ -89,10 +104,16 @@
         indent: 2fr,
         force-indent: true,
         align: center,
-        (value: [Институт №#institute.number – «#institute.name»],
-            when-present: (institute.number, institute.name)),
-        (value: [Кафедра #department.number – «#department.name»],       
-            when-present: (department.number, department.name)),
+        (
+            value: [Институт №#institute.number – «#institute.name»],
+            when-present: (institute.number, institute.name),
+            rule: array.any
+        ),
+        (
+            value: [Кафедра #department.number – «#department.name»],
+            when-present: (department.number, department.name),
+            rule: array.any
+        ),
     )
 
     per-line(
