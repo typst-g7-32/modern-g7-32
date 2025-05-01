@@ -105,12 +105,12 @@
         force-indent: true,
         align: center,
         (
-            value: [Институт №#institute.number – «#institute.name»],
+            value: [Институт №#institute.number --- «#institute.name»],
             when-present: (institute.number, institute.name),
             rule: array.any
         ),
         (
-            value: [Кафедра #department.number – «#department.name»],
+            value: [Кафедра #department.number --- «#department.name»],
             when-present: (department.number, department.name),
             rule: array.any
         ),
