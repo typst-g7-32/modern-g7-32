@@ -17,7 +17,7 @@
   structure-heading-style(heading(numbering: none)[#body])
 }
 
-#let headings(text-size, indent) = body => {
+#let headings(text-size, indent, pagebreaks) = body => {
   show heading: set text(size: text-size)
   set heading(numbering: "1.1")
 
@@ -30,7 +30,9 @@
   }
 
   show heading.where(level: 1): it => {
-    pagebreak(weak: true)
+    if pagebreaks {
+      pagebreak(weak: true)
+    }
     it
   }
 
@@ -38,7 +40,9 @@
 
   show structural-heading: set heading(numbering: none)
   show structural-heading: it => {
-    pagebreak(weak: true)
+    if pagebreaks {
+      pagebreak(weak: true)
+    }
     structure-heading-style(it)
   }
 

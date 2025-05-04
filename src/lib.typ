@@ -26,7 +26,6 @@
       title-template(..title-arguments),
       breakable: false,
     )
-    pagebreak(weak: true)
   }
   
   if show-performers-page { performers-page(performers) }
@@ -38,6 +37,7 @@
   indent: 1.25cm,
   margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
   pagination-align: center,
+  pagebreaks: true,
   city: none,
   year: auto,
   hide-title: false,
@@ -67,17 +67,14 @@
   text-size = fetch-field(text-size, ("default*", "small"))
 
   show: gost-style.with(
-    text-size: text-size.default,
-    small-text-size: text-size.small, 
-    indent: indent, 
-    year: year, 
-    city: city, 
-    hide-title: hide-title, 
-    margin: margin, 
-    pagination-align: pagination-align
+    year, city, hide-title, text-size.default, text-size.small, 
+    indent, margin, pagination-align, pagebreaks
   )
 
-  gost-common(title-template, title-arguments, city, year, hide-title, performers, force-performers)
+  gost-common(
+    title-template, title-arguments, city, year, 
+    hide-title, performers, force-performers
+  )
 
   body
 }

@@ -8,7 +8,6 @@
   }
   let current-numbering = heading-numbering(current-heading-numbering.first())
   (current-numbering, numbering("1.1", element-numbering)).join(".")
-  // formatter(str(current-numbering)+".{1}")(element-numbering)
 }
 
 #let annex-heading(status, level: 1, body) = {
@@ -16,8 +15,6 @@
 }
 
 #let annexes(content) = {
-  [#none <annexes>]
-
   set heading(
     numbering: heading-numbering,
     hanging-indent: 0pt
@@ -30,13 +27,15 @@
     block[#upper([приложение]) #numbering(it.numbering, ..counter(heading).at(it.location())) \ #text(weight: "medium")[#it.body]]
   }
 
-  show heading.where(level: 1): it => {
+  show heading.where(level: 1): it => context {
     counter(figure.where(kind: image)).update(0)
     counter(figure.where(kind: table)).update(0)
     counter(figure.where(kind: raw)).update(0)
     counter(math.equation).update(0)
 
-    pagebreak(weak: true)
+    if query(<modern-g7-32-parameters>).first().value.pagebreaks {
+      pagebreak(weak: true)
+    }
     it
   }
 

@@ -1,5 +1,5 @@
 #let small-text = body => context {
-  let target-size = query(<small-text-size>).first().value
+  let target-size = query(<modern-g7-32-parameters>).first().value.small-text-size
   set text(size: target-size)
   body
 }

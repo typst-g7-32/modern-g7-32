@@ -2,18 +2,11 @@
 #import "component/annexes.typ": is-heading-in-annex
 
 #let gost-style(
-  year: none,
-  city: "", 
-  hide-title: false, 
-  text-size: 14pt, 
-  small-text-size: 10pt, 
-  indent: 1.25cm, 
-  margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
-  pagination-align: center,
-  body,
+  year, city, hide-title, text-size, small-text-size, 
+  indent, margin,pagination-align, pagebreaks, body
 ) = {
   if small-text-size == none { small-text-size = text-size - 4pt }
-  [#metadata(small-text-size) <small-text-size>]
+  [#metadata((small-text-size: small-text-size, pagebreaks: pagebreaks)) <modern-g7-32-parameters>]
 
   set page(margin: margin)
 
@@ -84,6 +77,6 @@
 
   set bibliography(style: "gost-r-705-2008-numeric", title: structural-heading-titles.references)
   
-  show: headings(text-size, indent)
+  show: headings(text-size, indent, pagebreaks)
   body
 }

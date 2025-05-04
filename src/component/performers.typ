@@ -61,5 +61,4 @@
     block[Соисполнители:]
     group-organizations(co-performers)
   }
-  pagebreak(weak: true)
 }
