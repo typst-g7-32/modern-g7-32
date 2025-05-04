@@ -40,13 +40,20 @@ jobs:
           args: >-
             compile --root . tests/documents/preview/test.typ
             preview_assets/preview.png --format png --pages 1 --ppi 300
+      
+      - name: Get latest tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: typst-g7-32/modern-g7-32
+          releases-only: true
+        id: latest-tag
 
       - name: Compile source Typst document to PNG
         uses: 'docker://ghcr.io/typst/typst:latest'
         with:
           args: >-
-            compile --root . ./assets/utils/render-source.typ
-            preview_assets/source.png --format png --pages 1 --ppi 300
+            compile --root . .github/workflows/utils/render-source.typ
+            preview_assets/source.png --format png --pages 1 --ppi 300 --input current-version=${{ steps.latest-tag.outputs.tag }}
 
       - name: Stash preview_assets
         run: |
