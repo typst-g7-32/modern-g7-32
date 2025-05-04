@@ -75,11 +75,10 @@
   set enum(indent: indent, spacing: 1em)
   
   set page(footer: context {
-    let page = here().page()
-    if page == 1 and not hide-title {
+    if counter(page).get() == (1,) and not hide-title {
       align(center)[#city #year]
     } else {
-      align(pagination-align)[#page]
+      align(pagination-align)[#counter(page).display()]
     }
   })
 
