@@ -36,6 +36,7 @@
   text-size: (default: 14pt, small: 10pt),
   indent: 1.25cm,
   margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
+  title-footer-align: center,
   pagination-align: center,
   pagebreaks: true,
   city: none,
@@ -68,7 +69,7 @@
 
   show: gost-style.with(
     year, city, hide-title, text-size.default, text-size.small, 
-    indent, margin, pagination-align, pagebreaks
+    indent, margin, title-footer-align, pagination-align, pagebreaks
   )
 
   gost-common(

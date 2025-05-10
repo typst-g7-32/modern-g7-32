@@ -3,7 +3,7 @@
 
 #let gost-style(
   year, city, hide-title, text-size, small-text-size, 
-  indent, margin,pagination-align, pagebreaks, body
+  indent, margin, title-footer-align, pagination-align, pagebreaks, body
 ) = {
   if small-text-size == none { small-text-size = text-size - 4pt }
   [#metadata((small-text-size: small-text-size, pagebreaks: pagebreaks)) <modern-g7-32-parameters>]
@@ -69,7 +69,7 @@
   
   set page(footer: context {
     if counter(page).get() == (1,) and not hide-title {
-      align(center)[#city #year]
+      align(title-footer-align)[#city #year]
     } else {
       align(pagination-align)[#counter(page).display()]
     }

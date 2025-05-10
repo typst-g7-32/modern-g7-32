@@ -36,6 +36,7 @@
   text-size: (default: 14pt, small: 10pt), // Можно указать размеры текста
   indent: 1.25cm, // Можно указать отступ
   hide-title: false, // Убрать ли титульный лист
+  title-footer-align: center, // Выравнивание города и года на титульном листе
   pagination-align: center, // Выравнивание номера страницы
   margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm), // Отступы страницы
   pagebreaks: true, // Убрать ли разрывы страниц
