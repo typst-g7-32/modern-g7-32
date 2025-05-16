@@ -4,11 +4,11 @@
 #let arguments(..args, year: auto) = {
     let args = args.named()
     args.organization = fetch-field(
-        args.at("organization", default: none), 
+        args.at("organization", default: none),
         default: (
-            full: "Московский авиационный институт", 
-            short: "Национальный исследовательский университет"), 
-        ("*full", "short"), 
+            full: "Московский авиационный институт",
+            short: "Национальный исследовательский университет"),
+        ("*full", "short"),
         hint: "организации")
     args.agreed-by = fetch-field(args.at("agreed-by", default: none), ("name*", "position*", "year"), hint: "утверждения")
     args.approved-by = fetch-field(args.at("approved-by", default: none), ("name*", "position*", "year"), hint: "согласования")
@@ -27,7 +27,7 @@
 #let template(
     ministry: none,
     organization: (
-        full: "Московский авиационный институт", 
+        full: "Московский авиационный институт",
         short: "Национальный исследовательский университет"
     ),
     institute: (number: none, name: none),
@@ -36,7 +36,7 @@
     approved-by: (name: none, position: none, year: auto),
     agreed-by: (name: none, position: none, year: none),
     report-type: "Отчёт",
-    about: "О лабораторной работе", 
+    about: "О лабораторной работе",
     part: none,
     bare-subject: false,
     research: none,
@@ -50,7 +50,7 @@
       ministry,
       (value: upper(text(size: 18pt)[#organization.full]),
           when-present: organization.full),
-      (value: [#upper(organization.short)], 
+      (value: [#upper(organization.short)],
           when-present: organization.short),
     )
 
@@ -62,10 +62,10 @@
         align: center,
         (value: [Институт №#institute.number – «#institute.name»],
             when-present: (institute.number, institute.name)),
-        (value: [Кафедра #department.number – «#department.name»],       
+        (value: [Кафедра #department.number – «#department.name»],
             when-present: (department.number, department.name)),
     )
-    
+
     approved-and-agreed-fields(approved-by, agreed-by)
 
     per-line(
@@ -80,7 +80,7 @@
             value: [(#stage.type)],
             when-rule: (stage.type != none and stage.num == none)),
         (
-            value: [(#stage.type, этап #stage.num)], 
+            value: [(#stage.type, этап #stage.num)],
             when-present: (stage.type, stage.num)
         ),
         (value: [\ Книга #part], when-present: part),

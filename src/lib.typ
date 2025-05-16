@@ -27,7 +27,7 @@
       breakable: false,
     )
   }
-  
+
   if show-performers-page { performers-page(performers) }
 }
 
@@ -68,12 +68,12 @@
   text-size = fetch-field(text-size, ("default*", "small"))
 
   show: gost-style.with(
-    year, city, hide-title, text-size.default, text-size.small, 
+    year, city, hide-title, text-size.default, text-size.small,
     indent, margin, title-footer-align, pagination-align, pagebreaks
   )
 
   gost-common(
-    title-template, title-arguments, city, year, 
+    title-template, title-arguments, city, year,
     hide-title, performers, force-performers
   )
 

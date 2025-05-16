@@ -4,7 +4,7 @@
   assert(kind in (page, image, table, ref, "annex"), message: "Невозможно определить количество этих элементов")
   let target-counter = none
   let caption = none
-  if kind == page { 
+  if kind == page {
     target-counter = counter(page)
     caption = "с."
   } else if kind == "annex" {
@@ -19,7 +19,7 @@
     target-counter = counter("table")
     caption = "табл."
   }
-  
+
   let count = 0
   if kind == cite {
     count = target-counter.final().dedup().len()
@@ -47,7 +47,7 @@
       set par(first-line-indent: 0pt)
       upper(keywords.pos().join(", "))
     }
-  
+
     #text(body)
   ]
 }

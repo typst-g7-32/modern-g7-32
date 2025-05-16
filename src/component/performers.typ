@@ -37,7 +37,7 @@
     for performer in performers {
       sign-field(performer.name, performer.position, part: performer.part)
     }
-    
+
   }
 }
 
@@ -49,7 +49,7 @@
 
   group-organizations(not-co-performers)
 
-  let contains-co-performers = performers.any(performer => 
+  let contains-co-performers = performers.any(performer =>
     ( if "co-performer" in performer.keys() and performer.co-performer != none {
       performer.co-performer
     } else {
