@@ -4,8 +4,8 @@
 #let arguments(..args, year: auto) = {
     let args = args.named()
     args.organization = fetch-field(
-        args.at("organization", default: none), 
-        ("*full", "short"), 
+        args.at("organization", default: none),
+        ("*full", "short"),
         hint: "организации"
     )
     args.approved-by = fetch-field(
@@ -49,7 +49,7 @@
     approved-by: (name: none, position: none, year: auto),
     agreed-by: (name: none, position: none, year: none),
     report-type: "Отчёт",
-    about: none, 
+    about: none,
     bare-subject: false,
     research: none,
     subject: none,
@@ -73,7 +73,7 @@
         (value: [Рег. №: #research-number], when-present: research-number),
         (value: [Рег. № ИКРБС: #report-number], when-present: report-number),
     )
-    
+
     approved-and-agreed-fields(approved-by, agreed-by)
 
     per-line(
@@ -88,7 +88,7 @@
             value: [(#stage.type)],
             when-rule: (stage.type != none and stage.num == none)),
         (
-            value: [(#stage.type, этап #stage.num)], 
+            value: [(#stage.type, этап #stage.num)],
             when-present: (stage.type, stage.num)
         ),
         (value: [\ Книга #part], when-present: part),

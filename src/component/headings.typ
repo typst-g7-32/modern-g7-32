@@ -9,7 +9,7 @@
   references: [Список использованных источников],
 )
 
-#let structure-heading-style = it => {  
+#let structure-heading-style = it => {
   align(center)[#upper(it)]
 }
 
@@ -47,6 +47,6 @@
   }
 
   show heading: set block(below: 2em, above: 2em)
-  
+
   body
 }

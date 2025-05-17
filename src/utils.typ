@@ -65,10 +65,10 @@
 
 #let sign-field(name, position, part: none, details: "подпись, дата") = {
   let part-cell = []
-  if part != none { 
+  if part != none {
     part-cell = table.cell(align: top)[(#small-text[#part])]
   }
-  
+
   set par(justify: false)
   table(
     stroke: none,

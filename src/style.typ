@@ -2,7 +2,7 @@
 #import "component/annexes.typ": is-heading-in-annex
 
 #let gost-style(
-  year, city, hide-title, text-size, small-text-size, 
+  year, city, hide-title, text-size, small-text-size,
   indent, margin, title-footer-align, pagination-align, pagebreaks, body
 ) = {
   if small-text-size == none { small-text-size = text-size - 4pt }
@@ -66,7 +66,7 @@
 
   set list(marker: [–], indent: indent, spacing: 1em)
   set enum(indent: indent, spacing: 1em)
-  
+
   set page(footer: context {
     if counter(page).get() == (1,) and not hide-title {
       align(title-footer-align)[#city #year]
@@ -76,7 +76,7 @@
   })
 
   set bibliography(style: "gost-r-705-2008-numeric", title: structural-heading-titles.references)
-  
+
   show: headings(text-size, indent, pagebreaks)
   body
 }

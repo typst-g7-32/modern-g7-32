@@ -51,7 +51,7 @@
       result.push(value)
     }
   }
-  
+
   if result != () {
     align-function(align)[
       #grid[#for elem in result {[#elem \ ]}]
@@ -88,7 +88,7 @@
     #grid(
       columns: (1fr, 1fr),
       align: (left, right),
-      gutter: 15%,  
+      gutter: 15%,
       approved-field(approved-by),
       agreed-field(agreed-by)
     )
