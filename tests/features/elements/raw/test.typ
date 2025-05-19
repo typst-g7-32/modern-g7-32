@@ -30,3 +30,9 @@
   ```,
   caption: [Пример кода на C++: вычисление чисел Фибоначчи с мемоизацией]
 ) <example-code>
+
+Пример блока кода из файла представлен на листинге @example-code-2:
+#figure(
+    raw(read("program.py"), lang: "python", block: true),
+    caption: [Пример прочитанной из файла программы на Python]
+) <example-code-2>
