@@ -14,6 +14,7 @@
   show heading: set align(center)
   show heading: upper
   heading[#body]
+  [#metadata[#body]<struct-heading>]
 }
 
 #let headings(text-size, indent, pagebreaks) = body => {
@@ -23,7 +24,7 @@
 
   // Par-like non-structural headings.
   show heading: it => {
-    if it.body in structural-heading-titles.values() { return it }
+    if it.body in query(<struct-heading>).map(m => m.value) { return it }
     pad(it, left: indent)
   }
 
@@ -38,7 +39,7 @@
 
   show structural-heading: set heading(numbering: none)
   show structural-heading: set align(center)
-  show structural-heading: upper
+  show structural-heading: it => [#upper(it)#metadata(it.body)<struct-heading>]
 
   body
 }
