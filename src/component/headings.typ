@@ -9,44 +9,36 @@
   references: [Список использованных источников],
 )
 
-#let structure-heading-style = it => {
-  align(center)[#upper(it)]
-}
-
 #let structure-heading(body) = {
-  structure-heading-style(heading(numbering: none)[#body])
+  set heading(numbering: none)
+  show heading: set align(center)
+  show heading: upper
+  heading[#body]
 }
 
 #let headings(text-size, indent, pagebreaks) = body => {
-  show heading: set text(size: text-size)
   set heading(numbering: "1.1")
+  show heading: set text(size: text-size)
+  show heading: set block(spacing: 2em)
 
+  // Par-like non-structural headings.
   show heading: it => {
-    if it.body not in structural-heading-titles.values() {
-      pad(it, left: indent)
-    } else {
-      it
-    }
+    if it.body in structural-heading-titles.values() { return it }
+    pad(it, left: indent)
   }
 
   show heading.where(level: 1): it => {
-    if pagebreaks {
-      pagebreak(weak: true)
-    }
+    if pagebreaks { pagebreak(weak: true) }
     it
   }
 
-  let structural-heading = structural-heading-titles.values().fold(selector, (acc, i) => acc.or(heading.where(body: i, level: 1)))
+  let structural-heading = selector.or(..structural-heading-titles
+    .values()
+    .map(name => heading.where(body: name)))
 
   show structural-heading: set heading(numbering: none)
-  show structural-heading: it => {
-    if pagebreaks {
-      pagebreak(weak: true)
-    }
-    structure-heading-style(it)
-  }
-
-  show heading: set block(below: 2em, above: 2em)
+  show structural-heading: set align(center)
+  show structural-heading: upper
 
   body
 }
