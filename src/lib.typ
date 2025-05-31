@@ -50,7 +50,7 @@
   let table-counter = counter("table")
   let image-counter = counter("image")
   let citation-counter = counter("citation")
-  let annex-counter = counter("annex")
+  let appendix-counter = counter("appendix")
 
   show figure.where(kind: image): it => {
     image-counter.step()

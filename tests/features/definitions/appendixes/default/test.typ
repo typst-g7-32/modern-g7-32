@@ -1,10 +1,10 @@
-#import "/src/export.typ": gost, annexes, annex-heading
+#import "/src/export.typ": gost, appendixes, appendix-heading
 
 #show: gost.with(hide-title: true)
 
 #outline()
 
-#show: annexes
+#show: appendixes
 
 = Приложение с элементами
 Ссылка на рисунок @example-image.
@@ -63,6 +63,6 @@
 
 == Очередной заголовок приложения
 
-#annex-heading("вспомогательное", level: 2)[Приложение с указанием статуса второго уровня]
+#appendix-heading("вспомогательное", level: 2)[Приложение с указанием статуса второго уровня]
 
-#annex-heading("основное", level: 1)[Приложение с указанием статуса]
+#appendix-heading("основное", level: 1)[Приложение с указанием статуса]

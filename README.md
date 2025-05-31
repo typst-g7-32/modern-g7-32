@@ -11,7 +11,7 @@
 
 Чтобы использовать этот шаблон, импортируйте его, как показано ниже:
 ```typst
-#import "@preview/modern-g7-32": gost, abstract, title-templates, annexes, annex-heading
+#import "@preview/modern-g7-32": gost, abstract, title-templates, appendixes, appendix-heading
 
 #show: gost.with(
   ministry: "Наименование министерства (ведомства) или другого структурного образования, в систему которого входит организация-исполнитель",

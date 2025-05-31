@@ -1,4 +1,4 @@
-#import "/src/export.typ": gost, abstract, annexes, annex-heading, enum-numbering
+#import "/src/export.typ": gost, abstract, appendixes, appendix-heading, enum-numbering
 
 // Нумерация с использованием кириллицы
 #set enum(numbering: enum-numbering)
@@ -165,25 +165,25 @@ $ cal(A) := { x in RR | x "натуральное" } $
 
 #bibliography("references.bib")
 
-#show: annexes
+#show: appendixes
 
 = Изображения в приложениях
-Пример вставки изображения в приложение указан на рисунке @annex-image.
+Пример вставки изображения в приложение указан на рисунке @appendix-image.
 
 #figure(
   image("/tests/assets/nature.jpg", width: 40%),
   caption: "Пример изображения"
-) <annex-image>
+) <appendix-image>
 
 == Изображения в под-приложениях
-Пример вставки изображения в под-приложение указан на рисунке @annex-image-3.
+Пример вставки изображения в под-приложение указан на рисунке @appendix-image-3.
 #figure(
   image("/tests/assets/abstract.jpg", width: 40%),
   caption: "Пример изображения"
-) <annex-image-3>
+) <appendix-image-3>
 
 = Блоки кода
-Чтобы оформить блоки кода в документе, можно использовать синтаксис, похожий на Markdown. Пример указан на листинге @annex-code:
+Чтобы оформить блоки кода в документе, можно использовать синтаксис, похожий на Markdown. Пример указан на листинге @appendix-code:
 
 #figure(
   ```typst
@@ -194,17 +194,17 @@ $ cal(A) := { x in RR | x "натуральное" } $
   print("Hello, world!")
   ```,
   caption: [Пример кода на Typst]
-) <annex-code>
+) <appendix-code>
 
 = Формулы
 Чтобы оформить формулы в документе, можно использовать синтаксис typst-math. Примеры демонстрируют использование формул в шаблоне:
 
-$ sum_(k=0)^n k = 1 + ... + n = (n(n+1)) / 2 $ <annex-formula>
+$ sum_(k=0)^n k = 1 + ... + n = (n(n+1)) / 2 $ <appendix-formula>
 
-как оформлять таблицы сказано в приложении @annex-tables, а также в разделе с нумерацией @with-numbering.
+как оформлять таблицы сказано в приложении @appendix-tables, а также в разделе с нумерацией @with-numbering.
 
-== Таблицы <annex-tables>
-Для создания таблиц используется функция `table()`, обёрнутая в макрос `#figure` для добавления подписи. Пример показан на таблице @annex-table.
+== Таблицы <appendix-tables>
+Для создания таблиц используется функция `table()`, обёрнутая в макрос `#figure` для добавления подписи. Пример показан на таблице @appendix-table.
 
 #figure(
   table(
@@ -216,10 +216,10 @@ $ sum_(k=0)^n k = 1 + ... + n = (n(n+1)) / 2 $ <annex-formula>
     [Проверка], [Проверка], [Проверка], [Проверка],
   ),
   caption: [Пример таблицы с данными]
-) <annex-table>
+) <appendix-table>
 
-#annex-heading("справочное", level: 1)[Приложение с указанием статуса]
+#appendix-heading("справочное", level: 1)[Приложение с указанием статуса]
 #lorem(100)
 
-#annex-heading("справочное", level: 2)[Приложение второго уровня со статусом]
+#appendix-heading("справочное", level: 2)[Приложение второго уровня со статусом]
 #lorem(100)

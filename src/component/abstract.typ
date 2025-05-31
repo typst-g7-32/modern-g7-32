@@ -1,14 +1,14 @@
 #import "headings.typ": structural-heading-titles
 
 #let get-count(kind) = {
-  assert(kind in (page, image, table, ref, "annex"), message: "Невозможно определить количество этих элементов")
+  assert(kind in (page, image, table, ref, "appendix"), message: "Невозможно определить количество этих элементов")
   let target-counter = none
   let caption = none
   if kind == page {
     target-counter = counter(page)
     caption = "с."
-  } else if kind == "annex" {
-    target-counter = counter("annex")
+  } else if kind == "appendix" {
+    target-counter = counter("appendix")
     caption = "прил."
   } else if kind == ref {
     caption = "ист."
@@ -38,7 +38,7 @@
   [
     #heading(structural-heading-titles.abstract, outlined: false) <abstract>
     #context if count {
-      let counts = (get-count(page), get-count(image), get-count(table), get-count(ref), get-count("annex"))
+      let counts = (get-count(page), get-count(image), get-count(table), get-count(ref), get-count("appendix"))
       counts = counts.filter(it => it != none)
       [Отчёт #counts.join(", ")]
     }

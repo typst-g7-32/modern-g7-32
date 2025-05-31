@@ -1,4 +1,4 @@
-#import "/src/export.typ": gost, annexes
+#import "/src/export.typ": gost, appendixes
 
 #show: gost.with(hide-title: true)
 
@@ -8,15 +8,15 @@
   caption: "Элемент из основной части"
 ) <main-element>
 
-Ссылка на рисунок @sub-annex-element, @annex-element.
+Ссылка на рисунок @sub-appendix-element, @appendix-element.
 
-#show: annexes
+#show: appendixes
 
 = Приложение
 #figure(
   [],
   caption: "Элемент из приложения"
-) <annex-element>
+) <appendix-element>
 
 Ссылка на рисунок @main-element.
 
@@ -28,6 +28,6 @@
 #figure(
   [],
   caption: "Элемент из приложения второго уровня"
-) <sub-annex-element>
+) <sub-appendix-element>
 
 Ссылка на рисунок @main-element.

@@ -1,5 +1,5 @@
 #import "component/headings.typ": headings,  structural-heading-titles
-#import "component/annexes.typ": is-heading-in-annex
+#import "component/appendixes.typ": is-heading-in-appendix
 
 #let gost-style(
   year, city, hide-title, text-size, small-text-size,
@@ -29,7 +29,7 @@
   show outline: set block(below: indent / 2)
   show outline.entry: it => {
     show linebreak: [ ]
-    if is-heading-in-annex(it.element) {
+    if is-heading-in-appendix(it.element) {
       let body = it.element.body
       link(
         it.element.location(),
