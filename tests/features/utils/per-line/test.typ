@@ -1,18 +1,8 @@
 #import "/src/export.typ": custom-title-template as utils
 
-#utils.per-line(
-  align: center,
-  [проверка],
-  [проверка],
-  [проверка],
-)
+#utils.per-line(align: center, [проверка], [проверка], [проверка])
 
-#utils.per-line(
-  align: left,
-  [проверка],
-  [проверка],
-  [проверка],
-)
+#utils.per-line(align: left, [проверка], [проверка], [проверка])
 
 #utils.per-line(
   align: right,

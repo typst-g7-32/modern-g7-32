@@ -2,7 +2,7 @@
 
 #let data = (
   a: 1,
-  b: 2
+  b: 2,
 )
 
 #let fetched = fetch-field(data, ("a*", "b*", "c"))

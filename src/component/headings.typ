@@ -36,7 +36,9 @@
     it
   }
 
-  let structural-heading = structural-heading-titles.values().fold(selector, (acc, i) => acc.or(heading.where(body: i, level: 1)))
+  let structural-heading = structural-heading-titles
+    .values()
+    .fold(selector, (acc, i) => acc.or(heading.where(body: i, level: 1)))
 
   show structural-heading: set heading(numbering: none)
   show structural-heading: it => {

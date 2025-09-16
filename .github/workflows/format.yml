@@ -1,0 +1,46 @@
+name: format
+
+on:
+  push:
+    paths:
+        - "**/*.typ"
+  pull_request:
+    paths:
+        - "**/*.typ"
+
+jobs:
+  typstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          cache-bin: "true"
+          save-if: "true"
+
+      - name: Setup Rust toolchain
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+
+      - name: Install typstyle if absent
+        run: |
+          if [ ! -x ~/.cargo/bin/typstyle ]; then
+            cargo install typstyle
+          fi
+
+      - name: Run typstyle check
+        id: fmt
+        run: |
+          if ! typstyle --check $(find . -name '*.typ'); then
+            echo "not_formatted=true" >> $GITHUB_OUTPUT
+          else
+            echo "not_formatted=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Warn about formatting
+        if: steps.fmt.outputs.not_formatted == 'true'
+        run: |
+          echo "::warning file=.,title=Typstyle::Some files are not formatted. Run 'typstyle -i <file>' to fix."

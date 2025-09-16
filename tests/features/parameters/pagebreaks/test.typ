@@ -1,4 +1,4 @@
-#import "/src/export.typ": gost, appendixes
+#import "/src/export.typ": appendixes, gost
 
 #show: gost.with(hide-title: true, pagebreaks: false)
 

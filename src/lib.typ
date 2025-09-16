@@ -1,9 +1,17 @@
 #import "style.typ": gost-style
 #import "utils.typ": fetch-field
 #import "component/title-templates.typ": templates
-#import "component/performers.typ": performers-page, fetch-performers
+#import "component/performers.typ": fetch-performers, performers-page
 
-#let gost-common(title-template, title-arguments, city, year, hide-title, performers, force-performers) = {
+#let gost-common(
+  title-template,
+  title-arguments,
+  city,
+  year,
+  hide-title,
+  performers,
+  force-performers,
+) = {
   set par(justify: false)
 
   title-arguments = title-arguments.named()
@@ -21,11 +29,7 @@
   }
 
   if not hide-title {
-    block(
-      width: 100%,
-      title-template(..title-arguments),
-      breakable: false,
-    )
+    block(width: 100%, title-template(..title-arguments), breakable: false)
   }
 
   if show-performers-page { performers-page(performers) }
@@ -45,7 +49,7 @@
   performers: none,
   force-performers: false,
   ..title-arguments,
-  body
+  body,
 ) = {
   let table-counter = counter("table")
   let image-counter = counter("image")
@@ -68,13 +72,26 @@
   text-size = fetch-field(text-size, ("default*", "small"))
 
   show: gost-style.with(
-    year, city, hide-title, text-size.default, text-size.small,
-    indent, margin, title-footer-align, pagination-align, pagebreaks
+    year,
+    city,
+    hide-title,
+    text-size.default,
+    text-size.small,
+    indent,
+    margin,
+    title-footer-align,
+    pagination-align,
+    pagebreaks,
   )
 
   gost-common(
-    title-template, title-arguments, city, year,
-    hide-title, performers, force-performers
+    title-template,
+    title-arguments,
+    city,
+    year,
+    hide-title,
+    performers,
+    force-performers,
   )
 
   body
