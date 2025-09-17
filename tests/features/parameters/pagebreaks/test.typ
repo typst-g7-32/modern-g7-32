@@ -1,4 +1,4 @@
-#import "/src/export.typ": gost, annexes
+#import "/src/export.typ": appendixes, gost
 
 #show: gost.with(hide-title: true, pagebreaks: false)
 
@@ -12,7 +12,7 @@
 ==
 ===
 = Заключение
-#show: annexes
+#show: appendixes
 =
 ==
 ===

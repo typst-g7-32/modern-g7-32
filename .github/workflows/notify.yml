@@ -1,4 +1,4 @@
-name: Notify
+name: notify
 
 on:
   push:
@@ -39,9 +39,13 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    env:
+      BOT_TOKEN: ${{ secrets.NOTIFY_BOT_TOKEN }}
+      CHAT_ID: ${{ secrets.NOTIFY_CHAT_ID }}
     steps:
       - name: Notify the event on Telegram
+        if: ${{ env.BOT_TOKEN != '' && env.CHAT_ID != '' }}
         uses: EverythingSuckz/github-telegram-notify@main
         with:
-          bot_token: '${{ secrets.NOTIFY_BOT_TOKEN }}'
-          chat_id: '${{ secrets.NOTIFY_CHAT_ID }}'
+          bot_token: '${{ env.BOT_TOKEN }}'
+          chat_id: '${{ env.CHAT_ID }}'

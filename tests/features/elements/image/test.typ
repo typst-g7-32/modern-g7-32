@@ -6,10 +6,10 @@
 
 #figure(
   image("/tests/assets/abstract.jpg", width: 55%),
-  caption: "Пример изображения"
+  caption: "Пример изображения",
 ) <example-image>
 
 #figure(
   image("/tests/assets/home.jpg", width: 55%),
-  caption: "Другой пример изображения"
+  caption: "Другой пример изображения",
 ) <another-image>

@@ -1,20 +1,28 @@
-#import "component/headings.typ": headings,  structural-heading-titles
-#import "component/annexes.typ": is-heading-in-annex
+#import "component/headings.typ": headings, structural-heading-titles
+#import "component/appendixes.typ": is-heading-in-appendix
 
 #let gost-style(
-  year, city, hide-title, text-size, small-text-size,
-  indent, margin, title-footer-align, pagination-align, pagebreaks, body
+  year,
+  city,
+  hide-title,
+  text-size,
+  small-text-size,
+  indent,
+  margin,
+  title-footer-align,
+  pagination-align,
+  pagebreaks,
+  body,
 ) = {
   if small-text-size == none { small-text-size = text-size - 4pt }
-  [#metadata((small-text-size: small-text-size, pagebreaks: pagebreaks)) <modern-g7-32-parameters>]
+  [#metadata((
+      small-text-size: small-text-size,
+      pagebreaks: pagebreaks,
+    )) <modern-g7-32-parameters>]
 
   set page(margin: margin)
 
-  set text(
-    size: text-size,
-    lang: "ru",
-    hyphenate: false
-  )
+  set text(size: text-size, lang: "ru", hyphenate: false)
 
   set par(
     justify: true,
@@ -22,22 +30,24 @@
       amount: indent,
       all: true,
     ),
-    spacing: 1.5em
+    spacing: 1.5em,
   )
 
   set outline(indent: indent, depth: 3)
   show outline: set block(below: indent / 2)
   show outline.entry: it => {
     show linebreak: [ ]
-    if is-heading-in-annex(it.element) {
+    if is-heading-in-appendix(it.element) {
       let body = it.element.body
-      link(
-        it.element.location(),
-        it.indented(
-          none,
-          [Приложение #it.prefix() #it.element.body] + sym.space + box(width: 1fr, it.fill) + sym.space + sym.wj + it.page()
-        )
-      )
+      link(it.element.location(), it.indented(
+        none,
+        [Приложение #it.prefix() #it.element.body]
+          + sym.space
+          + box(width: 1fr, it.fill)
+          + sym.space
+          + sym.wj
+          + it.page(),
+      ))
     } else {
       it
     }
@@ -53,9 +63,7 @@
   show image: set align(center)
   show figure.where(kind: image): set figure(supplement: [Рисунок])
 
-  show figure.where(
-    kind: table
-  ): it => {
+  show figure.where(kind: table): it => {
     set block(breakable: true)
     set figure.caption(position: top)
     it
@@ -75,7 +83,10 @@
     }
   })
 
-  set bibliography(style: "gost-r-705-2008-numeric", title: structural-heading-titles.references)
+  set bibliography(
+    style: "gost-r-705-2008-numeric",
+    title: structural-heading-titles.references,
+  )
 
   show: headings(text-size, indent, pagebreaks)
   body

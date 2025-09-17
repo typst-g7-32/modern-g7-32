@@ -1,4 +1,4 @@
-#import "/src/export.typ": gost, enum-numbering
+#import "/src/export.typ": enum-numbering, gost
 
 #set enum(numbering: enum-numbering)
 #show: gost.with(hide-title: true)

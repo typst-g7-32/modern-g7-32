@@ -10,7 +10,12 @@
 
 #pagebreak()
 
-#show: gost.with(hide-title: true, margin: (left: 5cm, right: 1cm, top: 2cm, bottom: 5cm))
+#show: gost.with(hide-title: true, margin: (
+  left: 5cm,
+  right: 1cm,
+  top: 2cm,
+  bottom: 5cm,
+))
 #rect(width: 100%, height: 100%)
 
 #pagebreak()

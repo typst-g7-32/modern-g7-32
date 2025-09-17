@@ -1,6 +1,8 @@
 #import "../utils.typ": heading-numbering
 
-#let is-heading-in-annex(heading) = state("annexes", false).at(heading.location())
+#let is-heading-in-appendix(heading) = state("appendixes", false).at(
+  heading.location(),
+)
 
 #let get-element-numbering(current-heading-numbering, element-numbering) = {
   if (current-heading-numbering.first() <= 0 or element-numbering <= 0) {
@@ -10,21 +12,23 @@
   (current-numbering, numbering("1.1", element-numbering)).join(".")
 }
 
-#let annex-heading(status, level: 1, body) = {
+#let appendix-heading(status, level: 1, body) = {
   heading(level: level)[(#status)\ #body]
 }
 
-#let annexes(content) = {
-  set heading(
-    numbering: heading-numbering,
-    hanging-indent: 0pt
-  )
+#let appendixes(content) = {
+  set heading(numbering: heading-numbering, hanging-indent: 0pt)
 
   show heading: set align(center)
   show heading: it => {
-    assert(it.numbering != none, message: "В приложениях не может быть структурных заголовков или заголовков без нумерации")
-    counter("annex").step()
-    block[#upper([приложение]) #numbering(it.numbering, ..counter(heading).at(it.location())) \ #text(weight: "medium")[#it.body]]
+    assert(
+      it.numbering != none,
+      message: "В приложениях не может быть структурных заголовков или заголовков без нумерации",
+    )
+    counter("appendix").step()
+    block[#upper([приложение]) #numbering(it.numbering, ..counter(heading).at(
+        it.location(),
+      )) \ #text(weight: "medium")[#it.body]]
   }
 
   show heading.where(level: 1): it => context {
@@ -49,7 +53,7 @@
     [(#get-element-numbering(current-heading, it))]
   })
 
-  state("annexes").update(true)
+  state("appendixes").update(true)
   counter(heading).update(0)
   content
 }
