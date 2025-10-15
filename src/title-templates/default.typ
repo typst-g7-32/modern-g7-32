@@ -102,7 +102,7 @@
   )
 
   if manager.name != none {
-    let title = if type(manager.title) == type("string") and manager.title != "" { 
+    let title = if type(manager.title) == str and manager.title != "" { 
       manager.title + linebreak() 
     } else { 
       none 
