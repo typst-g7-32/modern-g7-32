@@ -31,7 +31,7 @@
   )
   args.manager = fetch-field(
     args.at("manager", default: none),
-    ("position*", "name*"),
+    ("position*", "name*", "hide-supervisor"),
     hint: "руководителя",
   )
 
@@ -60,7 +60,7 @@
   part: none,
   stage: none,
   federal: none,
-  manager: (position: none, name: none),
+  manager: (position: none, name: none, hide-supervisor: false),
   performer: none,
 ) = {
   per-line(
@@ -101,7 +101,13 @@
   )
 
   if manager.name != none {
-    sign-field(manager.at("name"), [Руководитель НИР,\ #manager.at("position")])
+    let supervisor = if manager.hide-supervisor == true {
+      none
+    } else {
+      "Руководитель НИР,"
+    }
+    
+    sign-field(manager.at("name"), [#supervisor #manager.at("position")])
   }
 
   if performer != none {
