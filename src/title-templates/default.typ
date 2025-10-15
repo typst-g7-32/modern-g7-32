@@ -32,6 +32,7 @@
   args.manager = fetch-field(
     args.at("manager", default: none),
     ("position*", "name*", "title"),
+    default: (title: "Руководитель НИР,"),
     hint: "руководителя",
   )
 
@@ -101,13 +102,12 @@
   )
 
   if manager.name != none {
-    let title = if manager.title != none {
-      manager.title
-    } else {
-      "Руководитель НИР,"
+    let title = if type(manager.title) == type("string") and manager.title != "" { 
+      manager.title + linebreak() 
+    } else { 
+      none 
     }
-    
-    sign-field(manager.at("name"), [#title\ #manager.at("position")])
+    sign-field(manager.at("name"), [#title #manager.at("position")])
   }
 
   if performer != none {
