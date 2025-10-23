@@ -111,9 +111,14 @@
   }
 
   if performer != none {
+    let title = if type(performer.title) == str and manager.title != "" {
+      performer.title + linebreak()
+    } else {
+      none
+    }
     sign-field(
       performer.at("name", default: none),
-      [Исполнитель НИР,\ #performer.at("position", default: none)],
+      [#title #performer.at("position", default: none)],
       part: performer.at("part", default: none),
     )
   }

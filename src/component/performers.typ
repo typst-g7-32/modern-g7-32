@@ -1,6 +1,9 @@
 #import "headings.typ": structural-heading-titles
 #import "../utils.typ": fetch-field, sign-field
 
+// TODO: Доработать логику работы с исполнителями
+// TODO: Запретить организацию для одного исполнителя
+
 #let fetch-performers(performers) = {
   let performers-args = (
     "name*",
@@ -8,6 +11,7 @@
     "co-performer",
     "part",
     "organization",
+    "title", // Только для одного исполнителя
   )
   if type(performers) == array {
     let current-organization = none
@@ -16,11 +20,18 @@
       if type(performer) == str {
         current-organization = performer
         continue
+      } else {
+        if type(performer) == dictionary and performers.len() > 1 and performer.at("title", default: none) != none {
+          panic("Если исполнителей несколько, заголовок не требуется")
+        }
       }
       let performer = fetch-field(
         performer,
         performers-args,
-        default: (co-performer: false),
+        default: (
+          co-performer: false,
+          title: "Исполнитель НИР,"
+        ),
         hint: "исполнителя №" + str(i + 1),
       )
       performer.organization = current-organization
@@ -31,7 +42,10 @@
     let performer = fetch-field(
       performers,
       performers-args,
-      default: (co-performer: false),
+      default: (
+        co-performer: false,
+        title: "Исполнитель НИР,",
+      ),
       hint: "исполнителя",
     )
     return (performer,)
