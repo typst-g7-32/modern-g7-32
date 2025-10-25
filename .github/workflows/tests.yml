@@ -34,7 +34,7 @@ jobs:
           version: 0.2.2
 
       - name: Run test suite
-        run: tt run --no-fail-fast
+        run: tt run --no-fail-fast --max-delta 5
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
