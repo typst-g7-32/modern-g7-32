@@ -11,7 +11,7 @@
 #let templates = {
   let result = (:)
   for template in template-names {
-    import "/src/title-templates/" + template + ".typ" as module
+    import "../title-templates/" + template + ".typ" as module
     result.insert(template, title-template-factory(
       module.template,
       module.arguments,
