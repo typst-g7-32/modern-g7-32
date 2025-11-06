@@ -30,6 +30,7 @@
       amount: indent,
       all: true,
     ),
+    leading: 1.5em-0.75em,
     spacing: 1.5em,
   )
 
