@@ -65,10 +65,10 @@
   show figure.where(kind: image): set figure(supplement: [Рисунок])
 
   show figure.where(kind: table): it => {
-    set block(breakable: true)
     set figure.caption(position: top)
     it
   }
+  show figure.where(kind: table): set block(breakable: true)
   show figure.caption.where(kind: table): set align(left)
   show table.cell: set align(left)
   // TODO: Расположить table.header по центру и сделать шрифт жирным
