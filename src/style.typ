@@ -73,6 +73,8 @@
   show table.cell: set align(left)
   // TODO: Расположить table.header по центру и сделать шрифт жирным
 
+  show figure.where(kind: raw): set block(breakable: true)
+
   set list(marker: [–], indent: indent, spacing: 1em)
   set enum(indent: indent, spacing: 1em)
 
