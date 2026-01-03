@@ -29,7 +29,7 @@
   }
 
   if not hide-title {
-    block(width: 100%, title-template(..title-arguments), breakable: false)
+    title-template(..title-arguments)
   }
 
   if show-performers-page { performers-page(performers) }
