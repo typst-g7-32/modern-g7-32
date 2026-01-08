@@ -1,6 +1,8 @@
 #import "component/headings.typ": headings, structural-heading-titles
 #import "component/appendixes.typ": is-heading-in-appendix
 
+#import "constants.typ": *
+
 #let gost-style(
   year,
   city,
@@ -14,7 +16,12 @@
   add-pagebreaks,
   body,
 ) = {
-  if small-text-size == none { small-text-size = text-size - 4pt }
+  let small-text-difference = (
+    default-text-size.default - default-text-size.small
+  )
+  if small-text-size == none {
+    small-text-size = text-size - small-text-difference
+  }
   [#metadata((
       small-text-size: small-text-size,
       add-pagebreaks: add-pagebreaks,
@@ -25,16 +32,16 @@
   set text(size: text-size, lang: "ru", hyphenate: false)
 
   set par(
-    justify: true,
+    justify: default-justify,
     first-line-indent: (
       amount: indent,
       all: true,
     ),
-    leading: 1.5em - 0.75em,
-    spacing: 1.5em,
+    leading: default-leading,
+    spacing: default-spacing,
   )
 
-  set outline(indent: indent, depth: 3)
+  set outline(indent: indent, depth: default-outline-depth)
   show outline: set block(below: indent / 2)
   show outline.entry: it => {
     show linebreak: [ ]
@@ -59,7 +66,7 @@
 
   set math.equation(numbering: "(1)")
 
-  show figure: pad.with(bottom: 0.5em)
+  show figure: pad.with(bottom: default-figure-margin-bottom)
 
   show image: set align(center)
   show figure.where(kind: image): set figure(supplement: [Рисунок])
@@ -75,8 +82,8 @@
 
   show figure.where(kind: raw): set block(breakable: true)
 
-  set list(marker: [–], indent: indent, spacing: 1em)
-  set enum(indent: indent, spacing: 1em)
+  set list(marker: [–], indent: indent, spacing: default-list-spacing)
+  set enum(indent: indent, spacing: default-enum-spacing)
 
   set page(footer: context {
     if counter(page).get() == (1,) and not hide-title {

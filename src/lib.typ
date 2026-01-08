@@ -3,6 +3,8 @@
 #import "component/title-templates.typ": templates
 #import "component/performers.typ": fetch-performers, performers-page
 
+#import "constants.typ": *
+
 #let gost-common(
   title-template,
   title-arguments,
@@ -37,9 +39,9 @@
 
 #let gost(
   title-template: templates.default,
-  text-size: (default: 14pt, small: 10pt),
-  indent: 1.25cm,
-  margin: (left: 30mm, right: 15mm, top: 20mm, bottom: 20mm),
+  text-size: default-text-size,
+  indent: default-indent,
+  margin: default-margin,
   title-footer-align: center,
   pagination-align: center,
   add-pagebreaks: true,

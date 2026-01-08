@@ -1,3 +1,5 @@
+#import "../constants.typ": default-heading-margin
+
 #let structural-heading-titles = (
   performers: [Список исполнителей],
   abstract: [Реферат],
@@ -48,7 +50,7 @@
     structure-heading-style(it)
   }
 
-  show heading: set block(below: 2em, above: 2em)
+  show heading: set block(..default-heading-margin)
 
   body
 }
