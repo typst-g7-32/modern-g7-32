@@ -1,7 +1,5 @@
 #import "../component/title.typ": (
-  approved-and-agreed-fields,
-  detailed-sign-field,
-  per-line,
+  approved-and-agreed-fields, detailed-sign-field, per-line,
 )
 #import "../utils.typ": fetch-field, sign-field
 

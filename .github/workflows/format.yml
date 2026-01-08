@@ -3,33 +3,22 @@ name: format
 on:
   push:
     paths:
-        - "**/*.typ"
+      - "**/*.typ"
   pull_request:
     paths:
-        - "**/*.typ"
+      - "**/*.typ"
 
 jobs:
   typstyle:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Setup Rust cache
-        uses: Swatinem/rust-cache@v2
-        with:
-          cache-bin: "true"
-          save-if: "true"
 
-      - name: Setup Rust toolchain
-        run: |
-          rustup toolchain install stable --profile minimal
-          rustup default stable
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
 
-      - name: Install typstyle if absent
-        run: |
-          if [ ! -x ~/.cargo/bin/typstyle ]; then
-            cargo install typstyle
-          fi
+      - name: Install typstyle
+        run: cargo binstall typstyle --no-confirm --locked
 
       - name: Run typstyle check
         id: fmt

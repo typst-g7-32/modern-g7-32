@@ -20,6 +20,8 @@
     year-cell = table.cell(align: right)[#year г.]
     line-end = 6
   }
+
+  // @typstyle off
   table(
     stroke: none,
     align: left,

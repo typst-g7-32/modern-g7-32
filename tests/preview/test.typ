@@ -1,9 +1,5 @@
 #import "/src/export.typ": (
-  abstract,
-  appendix-heading,
-  appendixes,
-  enum-numbering,
-  gost,
+  abstract, appendix-heading, appendixes, enum-numbering, gost,
 )
 
 // Нумерация с использованием кириллицы

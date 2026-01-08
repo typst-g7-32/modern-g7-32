@@ -118,7 +118,7 @@
     columns: (5fr, 1fr, 3fr, 1fr, 3fr),
     [#position], [], [], [], table.cell(align: bottom)[#unbreak-name(name)],
     table.hline(start: 2, end: 3),
-    [], [], table.cell(align: center)[#small-text[#details]], [], part-cell
+    [], [], table.cell(align: center)[#small-text[#details]], [], part-cell,
   )
 }
 

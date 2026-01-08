@@ -23,9 +23,9 @@
     small-text-size = text-size - small-text-difference
   }
   [#metadata((
-      small-text-size: small-text-size,
-      add-pagebreaks: add-pagebreaks,
-    )) <modern-g7-32-parameters>]
+    small-text-size: small-text-size,
+    add-pagebreaks: add-pagebreaks,
+  )) <modern-g7-32-parameters>]
 
   set page(margin: margin)
 

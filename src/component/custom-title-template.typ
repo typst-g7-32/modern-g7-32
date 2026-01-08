@@ -1,11 +1,7 @@
 #import "../utils.typ": fetch-field, sign-field
 #import "title.typ": (
-  agreed-field,
-  approved-and-agreed-fields,
-  approved-field,
-  detailed-sign-field,
-  if-present,
-  per-line,
+  agreed-field, approved-and-agreed-fields, approved-field, detailed-sign-field,
+  if-present, per-line,
 )
 #import "title-templates.typ": custom-title-template as from-module
 

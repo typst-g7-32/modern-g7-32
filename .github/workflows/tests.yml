@@ -8,7 +8,6 @@ on:
       - src/**
       - assets/utils/**
       - .github/workflows/**
-      - assets/utils/**
       - tests/**
   pull_request:
     branches:
@@ -27,11 +26,11 @@ jobs:
           packages: cargo
           version: 1
 
-      - name: Install tytanic from crates.io
-        uses: baptiste0928/cargo-install@v3.3.0
-        with:
-          crate: tytanic
-          version: 0.3.1
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
+
+      - name: Install tytanic
+        run: cargo binstall tytanic --version 0.3.3 --no-confirm
 
       - name: Run test suite
         run: tt run --no-fail-fast --max-delta 5
