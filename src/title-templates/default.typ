@@ -109,7 +109,7 @@
   }
 
   if performer != none {
-    let title = if type(performer.title) == str and manager.title != "" {
+    let title = if type(performer.title) == str and performer.title != "" {
       performer.title + linebreak()
     } else {
       none
